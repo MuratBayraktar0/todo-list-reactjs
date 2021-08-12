@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "../style/style.css"
 import Button from '../helpers/Button';
-import { todoDeleteAction } from '../reducer/actions';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { deleteTodo, updateTodo } from '../api';
 
 function TodoItem(props) {
     const [content, setContent] = useState(props.content)
@@ -10,15 +10,16 @@ function TodoItem(props) {
     const [done, setDone] = useState(props.done)
     const [doneImg, setDoneImg] = useState("https://i.pinimg.com/originals/d0/17/47/d01747c4285afa4e7a6e8656c9cd60cb.png")
     const [doneStyle, setDoneStyle] = useState({ "textDecoration": "" })
-    const dispatch = useDispatch();
 
 
     function editableChange() {
         editable ? setEditable(false) : setEditable(true);
+        editable ? props.updateTodo({ id: props.id, content: content, done: done }) : console.log("false");
     }
 
     function doneChange() {
-        done ? setDone(false) : setDone(true);
+        done ? setDone(false) : setDone(true);        
+        done ? props.updateTodo({ id: props.id, content: content, done: false }) : props.updateTodo({ id: props.id, content: content, done: true });
     }
 
 
@@ -31,18 +32,27 @@ function TodoItem(props) {
 
         <div className="todo-wrap">
             <div className="todo-border">
-                <img src={doneImg} height="14px" className="todo-image" onClick={() => doneChange()} />
+                <img src={doneImg} height="14px" className="todo-image" onClick={() => doneChange()} alt="done-button" />
                 <input className="todo-input" placeholder={props.placeholder} type={props.type} disabled={!editable} style={doneStyle} value={content} onChange={(e) => setContent(e.target.value)} />
-                <Button image="https://uxwing.com/wp-content/themes/uxwing/download/03-editing-user-action/edit-round.png" onClick={() => editableChange()} />
-                <Button image="https://icon-library.com/images/img_275374_45338.png" onClick={() => dispatch(props.todoDeleteAction(props.id))} />
+                <Button
+                    image="https://uxwing.com/wp-content/themes/uxwing/download/03-editing-user-action/edit-round.png"
+                    onClick={() => editableChange()}
+                />
+                <Button
+                    image="https://icon-library.com/images/img_275374_45338.png"
+                    onClick={() => props.deleteTodo(props.id)}
+                />
             </div>
 
         </div>
     );
 }
 
-const mapActionToProps = () => (
-    { todoDeleteAction }
-)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteTodo: (id) => dispatch(deleteTodo(id)),
+        updateTodo: (body) => dispatch(updateTodo(body))
+    }
+}
 
-export default connect(mapActionToProps)(TodoItem);
+export default connect(null, mapDispatchToProps)(TodoItem);

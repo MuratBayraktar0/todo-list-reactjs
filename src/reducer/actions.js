@@ -1,29 +1,57 @@
-import { todoPost, todoListGet } from "../api";
-import { TODO_ADD, TODO_DELETE, TODO_LIST_GET } from "./types";
+import {
+    POST_TODO_REQUEST,
+    DELETE_TODO_REQUEST,
+    UPDATE_TODO_REQUEST,
+    FETCH_TODO_LIST_REQUEST,
+    FETCH_TODO_LIST_SUCCESS,
+    FETCH_TODO_LIST_FAIL
+} from "./types";
 
 
 
-const todoAddAction = (content) => {
-    todoPost({ content: content, done: false })
+const postTodoRequest = () => {
     return {
-        type: TODO_ADD
+        type: POST_TODO_REQUEST
     }
 }
 
-const todoListGetAction = () => {
-    const data = todoListGet()
+const fetchTodolistRequest = () => {
     return {
-        type: TODO_LIST_GET,
-        payload: data
+        type: FETCH_TODO_LIST_REQUEST
     }
 }
 
-const todoDeleteAction = (id) => {
+const fetchTodolistSuccess = todolist => {
     return {
-        type: TODO_DELETE,
-        payload: id
+        type: FETCH_TODO_LIST_SUCCESS,
+        payload: todolist
     }
 }
 
+const fetchTodolistFail = error => {
+    return {
+        type: FETCH_TODO_LIST_FAIL,
+        payload: error
+    }
+}
 
-export { todoAddAction, todoDeleteAction, todoListGetAction };
+const deleteTodoRquest = () => {
+    return {
+        type: DELETE_TODO_REQUEST
+    }
+}
+
+const updateTodoRquest = () => {
+    return {
+        type: UPDATE_TODO_REQUEST
+    }
+}
+
+export {
+    postTodoRequest,
+    deleteTodoRquest,
+    updateTodoRquest,
+    fetchTodolistRequest,
+    fetchTodolistSuccess,
+    fetchTodolistFail
+};

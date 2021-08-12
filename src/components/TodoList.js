@@ -1,39 +1,49 @@
-//import TodoItem from "./TodoItem";
+import TodoItem from "./TodoItem";
 import "../style/style.css"
-import { connect, useDispatch } from "react-redux";
-import { todoListGetAction } from "../reducer/actions";
-import { useEffect } from "react";
-
+import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { fetchTodolist } from "../api";
 
 function TodoList(props) {
     useEffect(() => {
-        dispatch(todoListGetAction());
-    }, []);
-    const dispatch = useDispatch();
-
-
+        props.fetchTodolist()
+    }, [])
 
     return (
-        <div>
-            {/* {props.todolist.map((item, index) => (
-                < TodoItem
-                    key={index}
-                    content={item.content}
-                    done={item.done}
-                    id={item.id}
-                />
-            ))} */}
-        </div>
+        props.loading ?
+            (<h2>Loading</h2>) :
+            props.error ?
+                (<h2>{props.error}</h2>) :
+                props.todolist ?
+                    <div>{
+                        props.todolist.map((item, index) => (
+                            <TodoItem
+                                key={index}
+                                content={item.content}
+                                done={item.done}
+                                id={item.ID}
+                            />
+                        ))} </div > :
+                    (<h2>Your list is empty</h2>)
+
     );
+
 }
 
 
 const mapStateToProps = (state) => {
-    return { todolist: state.todolist }
+    return {
+        todolist: state.todolist,
+        loading: state.loading,
+        error: state.error
+    };
 }
 
-const mapActionToProps = () => {
-    return { todoListGetAction }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchTodolist: () => dispatch(fetchTodolist())
+    }
 }
 
-export default connect(mapStateToProps, mapActionToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

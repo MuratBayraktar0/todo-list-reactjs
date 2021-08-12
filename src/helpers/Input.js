@@ -5,7 +5,7 @@ function Input(props) {
     return (
         <div className="input-wrap">
             <div className="input-border">
-                {props.image ? <img src={props.image} height="20px" className="input-image" /> : <></>}
+                {props.image ? <img src={props.image} height="20px" className="input-image" alt={props.image + "-button"} /> : <></>}
                 <input className="input" placeholder={props.placeholder} type={props.type} onChange={props.onChange} />
             </div>
         </div>
