@@ -10,6 +10,12 @@ import {
 var INITIAL_STATE = {
   loading: false,
   todolist: [],
+  page: {
+    number: 0,
+    size: 5,
+    totalElements: 50,
+    totalPages: 10,
+  },
   error: "",
 };
 
@@ -24,7 +30,12 @@ function Reducer(state = INITIAL_STATE, action) {
     case FETCH_TODO_LIST_REQUEST:
       return { ...state, loading: true };
     case FETCH_TODO_LIST_SUCCESS:
-      return { loading: false, todolist: action.payload.todolist, error: "" };
+      return {
+        loading: false,
+        todolist: action.payload.todolist,
+        page: action.payload.page,
+        error: "",
+      };
     case FETCH_TODO_LIST_FAIL:
       return { loading: false, todolist: [], error: action.payload };
     default:

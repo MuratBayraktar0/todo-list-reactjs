@@ -8,7 +8,7 @@ import { fetchTodolistSuccess } from "../reducer/actions";
 
 function TodoList(props) {
   useEffect(() => {
-    props.fetchTodolist();
+    props.fetchTodolist(0, 5);
   }, []);
 
   function handleOnDragEnd(result) {
@@ -91,7 +91,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTodolist: () => dispatch(fetchTodolist()),
+    fetchTodolist: (page, size) => dispatch(fetchTodolist(page, size)),
     updateTodoSort: (backId, currentId, frontId) =>
       dispatch(updateTodoSort(backId, currentId, frontId)),
     fetchTodolistSuccess: (todolist) =>

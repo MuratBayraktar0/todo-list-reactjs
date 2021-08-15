@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
+import Pagination from "./components/Pagination";
 import TodoAdd from "./components/TodoAdd";
 import TodoList from "./components/TodoList";
-
-
 
 function TodoListApp() {
   return (
@@ -10,6 +9,7 @@ function TodoListApp() {
       <h2>To-do List</h2>
       <TodoAdd />
       <TodoList />
+      <Pagination totalPages={10} />
     </div>
   );
 }

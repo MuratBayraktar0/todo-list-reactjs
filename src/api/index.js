@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import {
   postTodoRequest,
   deleteTodoRquest,
@@ -8,11 +9,11 @@ import {
   fetchTodolistSuccess,
 } from "../reducer/actions";
 
-const fetchTodolist = () => {
+const fetchTodolist = (page, size) => {
   return (dispatch) => {
     dispatch(fetchTodolistRequest());
     axios
-      .get("http://localhost:8080/todo")
+      .get("http://localhost:8080/todo?page=" + page + "&size=" + size)
       .then((response) => {
         const todolist = response.data;
         dispatch(fetchTodolistSuccess(todolist));
