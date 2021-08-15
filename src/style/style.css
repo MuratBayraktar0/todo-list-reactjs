@@ -1,141 +1,149 @@
 body {
-    margin: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-left: 10;
+  margin-right: 14;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .button {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: rgba(31, 31, 228, 0.801);
-    color: white;
-    border-radius: 3px;
-    font-size: 14px;
-    transition: 300ms all;
-    cursor: pointer;
-    align-items: center;
-    border: 2px solid rgba(31, 31, 228, 0.2);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(31, 31, 228, 0.801);
+  color: white;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: 300ms all;
+  cursor: pointer;
+  align-items: center;
+  border: 2px solid rgba(31, 31, 228, 0.2);
 }
 
 .button:hover {
-    background-color: rgba(228, 61, 31, 0.808);
-    color: black;
-    border: 2px solid rgba(228, 61, 31, 0.808);
+  background-color: rgba(228, 61, 31, 0.808);
+  color: black;
+  border: 2px solid rgba(228, 61, 31, 0.808);
 }
 
-.image-button{
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    border-radius: 50px;
-    font-size: 14px;
-    transition: 300ms all;
-    cursor: pointer;
-    align-items: center;
-    margin: auto;
-    margin-right: 5px;
+.image-button {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 14px;
+  transition: 300ms all;
+  cursor: pointer;
+  align-items: center;
+  margin: auto;
+  margin-right: 5px;
 }
 
 .image-button:hover {
-    background-color: rgba(228, 61, 31, 0.808);
+  background-color: rgba(228, 61, 31, 0.808);
 }
 
-.input-wrap{
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 3px;
-
+.input-wrap {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 3px;
 }
 
-.input-border{
-    height: 100%;
-    border-radius: 3px;
-    border: 2px solid rgba(31, 31, 228, 0.2);
-    display: flex;
-    align-items: center;
+.input-border {
+  height: 100%;
+  border-radius: 3px;
+  border: 2px solid rgba(31, 31, 228, 0.2);
+  display: flex;
+  align-items: center;
 }
 
-.input{
-    border-radius: 3px;
-    border: 0;
-    width: 100%;
-    padding: 10px;
+.input {
+  border-radius: 3px;
+  border: 0;
+  width: 100%;
+  padding: 10px;
 }
 
-.input:focus{
-    outline: none;
+.input:focus {
+  outline: none;
 }
 
-.input-wrap:focus-within .input-border{
-    border: 2px solid rgba(31, 31, 228, 0.801);
+.input-wrap:focus-within .input-border {
+  border: 2px solid rgba(31, 31, 228, 0.801);
 }
 
 .input-image {
-    margin-right:5px;
-    margin-left:5px
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
-.todo-list-add{
-    display: grid;
-    grid-template-rows: auto auto;
-    row-gap: 8px;
-    text-align: center;
+.todo-list-add {
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: 8px;
+  text-align: center;
 }
 
-.todoAdd{
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    text-align: center;
+.todoAdd {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  text-align: center;
 }
 
-.todoAdd-button-input{
-    display: grid;
-    grid-template-columns: 10fr 2fr;
-    column-gap: 5px;
+.todoAdd-button-input {
+  display: grid;
+  grid-template-columns: 10fr 2fr;
+  column-gap: 5px;
 }
 
-.todo-wrap{
-    max-width: 500px;
-    width: 100%;
-    margin: 5px auto;
+.todo-wrap {
+  max-width: 500px;
+  width: 100%;
+  margin: 5px auto;
 }
 
-.todo-border{
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
-    border: 2px solid rgba(31, 31, 228, 0.2);
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    column-gap: 5px;
-    align-items: center;
-    padding: 5px 0;
-
+.todo-border {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  border: 2px solid rgba(31, 31, 228, 0.2);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  column-gap: 5px;
+  align-items: center;
+  padding: 5px 0;
 }
 
-.todo-input{
-    border-radius: 3px;
-    border: 0;
-    width: 100%;
-    font-size: 12px;
-
+.todo-input {
+  border-radius: 3px;
+  border: 0;
+  width: 100%;
+  font-size: 12px;
+  background-color: white;
 }
 
-.todo-input:focus{
-    outline: none;
+.todo-input:focus {
+  outline: none;
 }
 
-.todo-wrap:focus-within .todo-border{
-    border: 2px solid rgba(31, 31, 228, 0.801);
+.todo-wrap:focus-within .todo-border {
+  border: 2px solid rgba(31, 31, 228, 0.801);
 }
 
-.todo-image{
-    margin-left: 5px;
+.todo-list-drag {
+  width: 100%;
+  margin: auto;
+}
+
+.todo-done {
+  width: 75%;
+  height: 20px;
+  position: absolute;
+  margin-left: 30px;
+  cursor: pointer;
 }
