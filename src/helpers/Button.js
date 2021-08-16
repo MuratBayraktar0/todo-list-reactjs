@@ -4,6 +4,7 @@ import "../style/style.css";
 function Button(props) {
   return (
     <button
+      disabled={props.disabled}
       className={props.image ? "image-button" : "button"}
       onClick={props.onClick}
     >

@@ -19,6 +19,18 @@ body {
   border: 2px solid rgba(31, 31, 228, 0.2);
 }
 
+.button:disabled {
+  background-color: rgba(31, 31, 228, 0.401);
+  color: white;
+  border: 2px solid rgba(31, 31, 228, 0.101);
+}
+
+.button:disabled:hover {
+  background-color: rgba(31, 31, 228, 0.401);
+  color: white;
+  border: 2px solid rgba(31, 31, 228, 0.101);
+}
+
 .button:hover {
   background-color: rgba(228, 61, 31, 0.808);
   color: black;
@@ -156,4 +168,9 @@ body {
   margin: auto;
   display: flex;
   column-gap: 10px;
+}
+
+.pagination-target-button button {
+  background-color: rgba(228, 61, 31, 0.808);
+  color: black;
 }

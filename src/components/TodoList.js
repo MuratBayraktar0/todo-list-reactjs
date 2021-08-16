@@ -10,7 +10,6 @@ function TodoList(props) {
   useEffect(() => {
     props.fetchTodolist(0, 5);
   }, []);
-  1;
 
   function handleOnDragEnd(result) {
     var backId = "";
