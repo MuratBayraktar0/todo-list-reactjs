@@ -57,14 +57,14 @@ const updateTodo = (body) => {
 const updateTodoSort = (backId, currentId, frontId) => {
   return (dispatch) => {
     dispatch(updateTodoRquest());
-    axios.put(
+    const url =
       "http://localhost:8080/sort?backid=" +
-        backId +
-        "&currentid=" +
-        currentId +
-        "&frontid=" +
-        frontId
-    );
+      backId +
+      "&currentid=" +
+      currentId +
+      "&frontid=" +
+      frontId;
+    axios.put(url);
   };
 };
 
