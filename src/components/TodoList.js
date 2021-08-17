@@ -7,10 +7,6 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { fetchTodolistSuccess } from "../reducer/actions";
 
 function TodoList(props) {
-  useEffect(() => {
-    props.fetchTodolist(0);
-  }, []);
-
   function handleOnDragEnd(result) {
     var backId = "";
     var frontId = "";
@@ -35,10 +31,11 @@ function TodoList(props) {
           : "";
       props.updateTodoSort(backId, result.draggableId, frontId);
     }
+
     const list = Array.from(props.todolist);
     const [reorderedItem] = list.splice(result.source.index, 1);
     list.splice(result.destination.index, 0, reorderedItem);
-    props.fetchTodolistSuccess({ todolist: list });
+    props.fetchTodolistSuccess({ todolist: list, page: props.page });
   }
 
   return props.loading ? (
@@ -86,12 +83,12 @@ const mapStateToProps = (state) => {
     todolist: state.todolist,
     loading: state.loading,
     error: state.error,
+    page: state.page,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTodolist: (page, size) => dispatch(fetchTodolist(page, size)),
     updateTodoSort: (backId, currentId, frontId) =>
       dispatch(updateTodoSort(backId, currentId, frontId)),
     fetchTodolistSuccess: (todolist) =>

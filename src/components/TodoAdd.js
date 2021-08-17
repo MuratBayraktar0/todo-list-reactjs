@@ -13,7 +13,7 @@ function TodoAdd(props) {
     <div className="todoAdd">
       <form
         onSubmit={() => {
-          props.postTodo(content);
+          props.postTodo(content, props.number);
         }}
       >
         <div className="todoAdd-button-input">
@@ -28,6 +28,11 @@ function TodoAdd(props) {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    number: state.page.number,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(TodoAdd);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoAdd);

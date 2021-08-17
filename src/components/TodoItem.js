@@ -29,6 +29,10 @@ function TodoItem(props) {
       : setDoneStyle({ textDecoration: "" });
   }, [done]);
 
+  const deleteTodoHandle = () => {
+    props.deleteTodo(props.id);
+  };
+
   return (
     <div className="todo-wrap">
       <div className="todo-border">
@@ -58,12 +62,21 @@ function TodoItem(props) {
         />
         <Button
           image="https://icon-library.com/images/img_275374_45338.png"
-          onClick={() => props.deleteTodo(props.id)}
+          onClick={() => {
+            deleteTodoHandle();
+          }}
         />
       </div>
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    number: state.page.number,
+    todolist: state.todolist,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -72,4 +85,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(TodoItem);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchTodolist } from "./api";
 import Pagination from "./components/Pagination";
@@ -6,6 +6,9 @@ import TodoAdd from "./components/TodoAdd";
 import TodoList from "./components/TodoList";
 
 function TodoListApp(props) {
+  useEffect(() => {
+    props.fetchTodolist(props.number);
+  }, []);
   return (
     <div className="todo-list-add">
       <h2>To-do List</h2>
@@ -14,7 +17,6 @@ function TodoListApp(props) {
       <Pagination
         totalPages={props.totalPages}
         number={props.number}
-        size={props.size}
         onChange={props.fetchTodolist}
       />
     </div>

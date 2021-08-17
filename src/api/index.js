@@ -24,13 +24,13 @@ const fetchTodolist = (page) => {
   };
 };
 
-const postTodo = (content) => {
+const postTodo = (content, number) => {
   return (dispatch) => {
     dispatch(postTodoRequest());
     axios
       .post("http://localhost:8080/todo", { content: content, done: false })
       .then((response) => {
-        dispatch(fetchTodolist());
+        dispatch(fetchTodolist(number));
       })
       .catch((error) => {
         alert("Content must not be empty");
@@ -42,7 +42,7 @@ const deleteTodo = (id) => {
   return (dispatch) => {
     dispatch(deleteTodoRquest());
     axios.delete("http://localhost:8080/todo/" + id).then((response) => {
-      dispatch(fetchTodolist());
+      dispatch(fetchTodolist(0));
     });
   };
 };
